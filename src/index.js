@@ -4,11 +4,15 @@ import 'normalize.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {GlobalStyles} from './global-styles';
+import { firebase } from './lib/firebase.prod';
+import { FirebaseContext } from './context/firebase';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <App />
+    <FirebaseContext.Provider value={{firebase}}>
+      <GlobalStyles />
+      <App />
+    </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -17,3 +21,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+ 
